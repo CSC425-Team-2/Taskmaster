@@ -1,5 +1,5 @@
 # Taskmaster - Team 2 
-## Drew Allen, Luke Felisky, David Jimenez, Mark Payne, Jason Gant
+## Drew Allen, Luke Felisky, Mark Payne, and Jason Gant
 
 ### Tasks: 
 - Basic UI planning
