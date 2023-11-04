@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import 'App.css';
 
 const TaskEditForm = ({ task, onSave, onCancel }) => {
   const [editedTask, setEditedTask] = useState({ ...task });
