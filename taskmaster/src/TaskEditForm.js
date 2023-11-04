@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import 'App.css';
+import './App.css';
 
 const TaskEditForm = ({ task, onSave, onCancel }) => {
   const [editedTask, setEditedTask] = useState({ ...task });
@@ -12,7 +12,7 @@ const TaskEditForm = ({ task, onSave, onCancel }) => {
   };
 
   return (
-    <div className="custom-popup">
+    <div className="edit-popup">
       <h2>Edit Task</h2>
       <input
         type="text"
