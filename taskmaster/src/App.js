@@ -1,19 +1,24 @@
 import React, { useState } from 'react';
 import TaskList from './TaskList';
-import TaskForm from './TaskForm';
 import Task from './Task';
 import Popup from 'reactjs-popup';
 import TaskEditForm from './TaskEditForm';
+import TaskAddForm from './TaskAddForm';
+import Overlay from './Overlay';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
+  const [addingTask, setAddingTask] = useState(null);
   const [selectedTask, setSelectedTask] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
+  const [overlayVisibile, setOverlayVisible] = useState(false);
 
   const handleAddTask = (newTask) => {
     // Create a new task with a unique ID and mark it as not completed
     const task = { ...newTask, id: tasks.length + 1, completed: false };
     setTasks([...tasks, task]);
+    
+    setAddingTask(null);
   };
 
   const handleTaskClick = (taskId) => {
@@ -30,7 +35,6 @@ const App = () => {
 
   const handleEditTask = (editedTask) => {
     // Update the selected task with the edited task
-    setSelectedTask(editedTask);
     setEditingTask(editedTask);
   };
 
@@ -57,11 +61,38 @@ const App = () => {
     setSelectedTask(null);
   };
 
+  const handleOverlayChange = () => {
+    //Changes if the overlay is active or not
+    setOverlayVisible(!overlayVisibile);
+  }
+
   return (
     <div>
       <h1>TaskMaster</h1>
-      <TaskForm onTaskAdd={handleAddTask} />
+      <button onClick={() => {setAddingTask(true) && handleOverlayChange()}}>New Task</button>
+      <button onClick={() => {}}>Sort</button>
       <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
+
+      {overlayVisibile && (
+        <Popup open modal nested closeOnDocumentClick onClose={() => setOverlayVisible(null)}>
+          {() => (
+            <Overlay/>
+          )}
+        </Popup>)}
+
+      {addingTask && (
+        <Popup open modal nested closeOnDocumentClick onClose={() => setAddingTask(null)}>
+          {(close) => (
+            <TaskAddForm
+              onSave={handleAddTask}
+              onCancel={() => {
+                setAddingTask(null);
+                close();
+              }}
+            />
+          )}
+        </Popup>)}
+
       {selectedTask && (
         <Task
           task={selectedTask}
@@ -80,6 +111,7 @@ const App = () => {
               onCancel={() => {
                 setEditingTask(null);
                 close();
+                handleOverlayChange();
               }}
             />
           )}
