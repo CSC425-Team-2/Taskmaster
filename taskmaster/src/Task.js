@@ -14,7 +14,7 @@
 
        <p>Task Status: {task.completed ? 'Completed' : 'Pending'}</p>
 
-       <button onClick={() => onComplete(task)}>{task.completed ? 'Incomplete' : 'Complete'}</button>
+       <button onClick={() => onComplete(task)}>{task.completed ? 'Completed' : 'Complete'}</button>
 
        <button onClick={() => onEdit(task)}>Edit</button>
 
