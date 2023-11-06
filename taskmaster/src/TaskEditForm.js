@@ -12,7 +12,7 @@ const TaskEditForm = ({ task, onSave, onCancel }) => {
   };
 
   return (
-    <div className="edit-popup">
+    <div className="custom-popup">
       <h2>Edit Task</h2>
       <input
         type="text"

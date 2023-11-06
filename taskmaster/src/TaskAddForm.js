@@ -36,7 +36,7 @@ const TaskAddForm = ({onSave, onCancel}) => {
 
   return (
 
-    <div>
+    <div className="custom-popup">
 
       <input
 

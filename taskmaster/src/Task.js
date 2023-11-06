@@ -1,10 +1,11 @@
 // Task.js
 
    import React from 'react';
+   import './App.css';
 
    const Task = ({ task, onComplete, onEdit, onDelete, onClose}) => (
 
-     <div>
+     <div className="custom-popup">
 
        <h3>{task.title}</h3>
 

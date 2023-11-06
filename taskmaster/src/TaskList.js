@@ -1,6 +1,7 @@
 // TaskList.js
 
    import React from 'react';
+   import './App.css';
 
  
 
@@ -14,7 +15,7 @@
 
            {task.title} - {task.dueDate}
 		   <br />
-		   &nbsp;&nbsp;&nbsp;&nbsp;{task.completed ? 'Completed' : 'Pending'}
+		   {task.completed ? 'Completed' : 'Pending'}
 
          </li>
 

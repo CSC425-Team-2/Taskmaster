@@ -4,14 +4,13 @@ import Task from './Task';
 import Popup from 'reactjs-popup';
 import TaskEditForm from './TaskEditForm';
 import TaskAddForm from './TaskAddForm';
-import Overlay from './Overlay';
+import './App.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [addingTask, setAddingTask] = useState(null);
   const [selectedTask, setSelectedTask] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
-  const [overlayVisibile, setOverlayVisible] = useState(false);
 
   const handleAddTask = (newTask) => {
     // Create a new task with a unique ID and mark it as not completed
@@ -61,25 +60,27 @@ const App = () => {
     setSelectedTask(null);
   };
 
-  const handleOverlayChange = () => {
-    //Changes if the overlay is active or not
-    setOverlayVisible(!overlayVisibile);
-  }
-
   return (
     <div>
       <h1>TaskMaster</h1>
-      <button onClick={() => {setAddingTask(true) && handleOverlayChange()}}>New Task</button>
-      <button onClick={() => {}}>Sort</button>
-      <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
+      <div className='container'>
+        <div className='top-container'>
+          <hr className='divider-line' />
+          <div className='col1'>
+          <button onClick={() => {setAddingTask(true)}}>New Task</button>
+          <button onClick={() => {}}>Sort</button>
+          </div>
+          <div className='col2'><p>Task Name</p></div>
+          <div className='col3'><p>Due Date</p></div>
+          <div className='col4'><p>Description</p></div>
+          <div className='col5'><p>Status</p></div>
+        </div>
+        <div className='bottom-container'>
+        <hr className='divider-line' />
 
-      {overlayVisibile && (
-        <Popup open modal nested closeOnDocumentClick onClose={() => setOverlayVisible(null)}>
-          {() => (
-            <Overlay/>
-          )}
-        </Popup>)}
-
+        <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
+        </div>
+      </div>
       {addingTask && (
         <Popup open modal nested closeOnDocumentClick onClose={() => setAddingTask(null)}>
           {(close) => (
@@ -94,14 +95,18 @@ const App = () => {
         </Popup>)}
 
       {selectedTask && (
-        <Task
+        <Popup open modal nested closeOnDocumentClick onClose={() => setSelectedTask(null)}>
+        {(close) => (
+          <Task
           task={selectedTask}
           onComplete={handleCompleteTask}
           onEdit={handleEditTask}
           onDelete={handleDeleteTask}
           onClose={handleCloseTask}
         />
-      )}
+        )}
+      </Popup>)}
+        
       {editingTask && (
         <Popup open modal nested closeOnDocumentClick onClose={() => setEditingTask(null)}>
           {(close) => (
@@ -111,7 +116,6 @@ const App = () => {
               onCancel={() => {
                 setEditingTask(null);
                 close();
-                handleOverlayChange();
               }}
             />
           )}
