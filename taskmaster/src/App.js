@@ -63,23 +63,19 @@ const App = () => {
   return (
     <div>
       <h1>TaskMaster</h1>
-      <div className='container'>
-        <div className='top-container'>
-          <hr className='divider-line' />
-          <div className='col1'>
-          <button onClick={() => {setAddingTask(true)}}>New Task</button>
-          <button onClick={() => {}}>Sort</button>
-          </div>
-          <div className='col2'><p>Task Name</p></div>
-          <div className='col3'><p>Due Date</p></div>
-          <div className='col4'><p>Description</p></div>
-          <div className='col5'><p>Status</p></div>
-        </div>
-        <div className='bottom-container'>
-        <hr className='divider-line' />
+      <button onClick={() => {setAddingTask(true)}}>New Task</button>
+      <button onClick={() => {}}>Sort</button>
+      <hr className='divider-line' />
+      <div className='top-container'>
+        <div className='col1'><p>Task Name</p></div>
+        <div className='col2'><p>Due Date</p></div>
+        <div className='col3'><p>Description</p></div>
+        <div className='col4'><p>Status</p></div>
+      </div>
+      <hr className='divider-line' />
+      <div className='bottom-container'>
 
-        <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
-        </div>
+      <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
       </div>
       {addingTask && (
         <Popup open modal nested closeOnDocumentClick onClose={() => setAddingTask(null)}>
