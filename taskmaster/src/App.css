@@ -1,14 +1,24 @@
 
   /* custom-popup-styles.css */
 
-  #button {
+  #menu-button {
     cursor: pointer;
+    min-width: 5%;
+    position: relative;
+    padding: 2%;
+    padding-left: 1%;
+    padding-right: 1%;
+    font-size: 1.2rem;
+    margin-left: 5px;
+    margin-right: 5px;
   }
+
   .custom-popup {
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 5%;
+  min-width: 100%;
   max-width: 100%;
   margin: 0 auto;
   position: 'fixed';
@@ -47,16 +57,14 @@
 
 .top-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 50px 20px;
 }
 
 .bottom-container {
   display: grid;
   grid-auto-rows: 20%;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 4% 4%;
-  
+  grid-template-columns: 1fr 1fr;
 }
 
 #col1 {
@@ -75,7 +83,7 @@
 }
 
 #col4 {
-  grid-column: 4/5;
+  grid-column: 2/3;
   padding-right: 10%;
 }
 
@@ -99,6 +107,29 @@
     z-Index: 1000;
   }
 
+  .top-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 50px 20px;
+    font-size: 1.3rem;
+  }
+  
+  .bottom-container {
+    display: grid;
+    grid-auto-rows: 20%;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    font-size: 1.2rem;
+  }
+
+  .row {
+    grid-template-rows: 4fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  #col1 {
+    grid-column: 1/2;
+  }
+
   #col2 {
     display: block;
     grid-column: 2/3;
@@ -107,5 +138,9 @@
   #col3 {
     display: block;
     grid-column: 3/4;
+  }
+
+  #col4 {
+    grid-column: 4/5;
   }
 }

@@ -63,8 +63,8 @@ const App = () => {
   return (
     <div>
       <h1>TaskMaster</h1>
-      <button id='button' onClick={() => {setAddingTask(true)}}>New Task</button>
-      <button id='button' onClick={() => {}}>Sort</button>
+      <button id='menu-button' onClick={() => {setAddingTask(true)}}>New Task</button>
+      <button id='menu-button' onClick={() => {}}>Sort</button>
       <hr className='divider-line' />
       <div className='top-container'>
         <div id='col1'><p>Task Name</p></div>
@@ -73,10 +73,9 @@ const App = () => {
         <div id='col4'><p>Status</p></div>
       </div>
       <hr className='divider-line' />
-      <div className='bottom-container'>
 
       <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
-      </div>
+      
       {addingTask && (
         <Popup open modal nested closeOnDocumentClick onClose={() => setAddingTask(null)}>
           {(close) => (
