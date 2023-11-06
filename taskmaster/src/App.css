@@ -64,7 +64,10 @@
 .bottom-container {
   display: grid;
   grid-auto-rows: 20%;
-  grid-template-columns: 1fr 1fr;
+}
+
+.row {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 #col1 {
@@ -117,12 +120,10 @@
   .bottom-container {
     display: grid;
     grid-auto-rows: 20%;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
     font-size: 1.2rem;
   }
 
   .row {
-    grid-template-rows: 4fr;
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
