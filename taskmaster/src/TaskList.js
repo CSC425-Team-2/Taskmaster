@@ -12,11 +12,11 @@
        {tasks.map((task) => (
         
         <li key={task.id} onClick={() => onTaskClick(task.id)}>
-          <div className='col1'>{task.title}</div>
-          <div className='col2'>{task.dueDate}</div>
-          <div className='col3'>{task.description}</div>
-          <div className='col4'>{task.completed ? 'Completed' : 'Pending'}</div>
-          <br />
+          <div id='col1'>{task.title}</div>
+          <div id='col2'>{task.dueDate}</div>
+          <div id='col3'>{task.description}</div>
+          <div id='col4'>{task.completed ? 'Completed' : 'Pending'}</div>
+          <br/>
         </li>
        
        ))}

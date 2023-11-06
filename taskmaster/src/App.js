@@ -63,14 +63,14 @@ const App = () => {
   return (
     <div>
       <h1>TaskMaster</h1>
-      <button onClick={() => {setAddingTask(true)}}>New Task</button>
-      <button onClick={() => {}}>Sort</button>
+      <button id='button' onClick={() => {setAddingTask(true)}}>New Task</button>
+      <button id='button' onClick={() => {}}>Sort</button>
       <hr className='divider-line' />
       <div className='top-container'>
-        <div className='col1'><p>Task Name</p></div>
-        <div className='col2'><p>Due Date</p></div>
-        <div className='col3'><p>Description</p></div>
-        <div className='col4'><p>Status</p></div>
+        <div id='col1'><p>Task Name</p></div>
+        <div id='col2'><p>Due Date</p></div>
+        <div id='col3'><p>Description</p></div>
+        <div id='col4'><p>Status</p></div>
       </div>
       <hr className='divider-line' />
       <div className='bottom-container'>
