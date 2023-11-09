@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 
-const TaskEditForm = ({ task, onSave, onCancel }) => {
+const TaskEditForm = ({ task, onSave}) => {
   const [editedTask, setEditedTask] = useState({ ...task });
 
   const handleSave = () => {
@@ -32,8 +32,8 @@ const TaskEditForm = ({ task, onSave, onCancel }) => {
         value={editedTask.dueDate}
         onChange={(e) => setEditedTask({ ...editedTask, dueDate: e.target.value })}
       />
-      <button onClick={handleSave}>Save</button>
-      <button onClick={onCancel}>Cancel</button>
+      <button class='btn btn-primary' data-bs-dismiss='modal' onClick={handleSave}>Save</button>
+      <button class='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
     </div>
   );
 };

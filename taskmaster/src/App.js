@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
+
+//import "bootstrap/dist/js/bootstrap.bundle.min.js";
+//import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap-icons/font/bootstrap-icons.css";
+
 import TaskList from './TaskList';
 import Task from './Task';
-import Popup from 'reactjs-popup';
 import TaskEditForm from './TaskEditForm';
 import TaskAddForm from './TaskAddForm';
 import './App.css';
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
-  const [addingTask, setAddingTask] = useState(null);
   const [selectedTask, setSelectedTask] = useState(null);
   const [editingTask, setEditingTask] = useState(null);
 
@@ -16,14 +19,13 @@ const App = () => {
     // Create a new task with a unique ID and mark it as not completed
     const task = { ...newTask, id: tasks.length + 1, completed: false };
     setTasks([...tasks, task]);
-    
-    setAddingTask(null);
   };
 
   const handleTaskClick = (taskId) => {
     // Find and select the clicked task
     const task = tasks.find((t) => t.id === taskId);
     setSelectedTask(task);
+    
   };
 
   const handleCompleteTask = (task) => {
@@ -46,7 +48,6 @@ const App = () => {
 
     // Update the selected task with the edited task
     setSelectedTask(editedTask);
-    setEditingTask(null); // Close the edit form
   };
 
   const handleDeleteTask = (taskId) => {
@@ -55,67 +56,83 @@ const App = () => {
     setSelectedTask(null);
   };
 
-  const handleCloseTask = () => {
-    // Close the current task
-    setSelectedTask(null);
-  };
-
   return (
+
     <div>
-      <h1>TaskMaster</h1>
-      <button id='menu-button' onClick={() => {setAddingTask(true)}}>New Task</button>
-      <button id='menu-button' onClick={() => {}}>Sort</button>
-      <hr className='divider-line' />
-      <div className='top-container'>
-        <div id='col1'><p>Task Name</p></div>
-        <div id='col2'><p>Due Date</p></div>
-        <div id='col3'><p>Description</p></div>
-        <div id='col4'><p>Status</p></div>
-      </div>
-      <hr className='divider-line' />
+      <nav class='navbar navbar-expand-md navbar-dark bg-light'>
+        <div class='container-fluid'>
 
-      <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
-      
-      {addingTask && (
-        <Popup open modal nested closeOnDocumentClick onClose={() => setAddingTask(null)}>
-          {(close) => (
-            <TaskAddForm
-              onSave={handleAddTask}
-              onCancel={() => {
-                setAddingTask(null);
-                close();
-              }}
-            />
-          )}
-        </Popup>)}
+          <h2>TaskMaster</h2>
 
-      {selectedTask && (
-        <Popup open modal nested closeOnDocumentClick onClose={() => setSelectedTask(null)}>
-        {(close) => (
-          <Task
-          task={selectedTask}
-          onComplete={handleCompleteTask}
-          onEdit={handleEditTask}
-          onDelete={handleDeleteTask}
-          onClose={handleCloseTask}
-        />
-        )}
-      </Popup>)}
+          <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#add-modal'>Add Task</button>
         
-      {editingTask && (
-        <Popup open modal nested closeOnDocumentClick onClose={() => setEditingTask(null)}>
-          {(close) => (
-            <TaskEditForm
-              task={editingTask}
-              onSave={handleSaveEditedTask}
-              onCancel={() => {
-                setEditingTask(null);
-                close();
-              }}
-            />
-          )}
-        </Popup>
-      )}
+          <select class='form-select'>
+            <option>Order of Creation</option>
+            <option>Due Dates</option>
+            <option>Completed</option>
+          </select>
+        </div>
+      </nav>
+
+      <div class='container-fluid'>
+
+
+        <hr class='divider-line' />
+
+        <div class = 'container'>
+          <div class='row'>
+            <div class='col-3'><p>Task Name</p></div>
+            <div class='col-3'><p>Due Date</p></div>
+            <div class='col-3'><p>Description</p></div>
+            <div class='col-3'><p>Status</p></div>
+          </div>
+        </div>
+
+        <hr className='divider-line' />
+        
+        <div class='container'>
+        <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
+        </div>
+
+        <div class='modal' id='add-modal'>
+          <div class='modal-dialog'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h4>PLACEHOLDERS Adding a New Task</h4>
+              </div>
+              <div class='modal-body'>
+                <TaskAddForm onSave={handleAddTask}/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='modal' id='edit-modal'>
+          <div class='modal-dialog'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h4>PLACEHOLDERS Editing a Task</h4>
+              </div>
+              <div class='modal-body'>
+                <TaskEditForm task={editingTask} onSave={handleSaveEditedTask}/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='modal' id='task-modal'>
+          <div class='modal-dialog'>
+            <div class='modal-content'>
+              <div class='modal-header'>
+                <h4>PLACEHOLDERS Task Opened</h4>
+              </div>
+              <div class='modal-body'>
+                <Task task={selectedTask} onComplete={handleCompleteTask} onEdit={handleEditTask} onDelete={handleDeleteTask}/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

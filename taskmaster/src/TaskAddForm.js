@@ -12,8 +12,6 @@ const TaskAddForm = ({onSave, onCancel}) => {
 
   const [dueDate, setDueDate] = useState('');
 
-
-
   const handleAddingTask = () => {
 
     // Validate and add task
@@ -38,44 +36,26 @@ const TaskAddForm = ({onSave, onCancel}) => {
 
     <div className="custom-popup">
 
-      <input
-
-        type="text"
-
-        placeholder="Title"
-
-        value={title}
-
-        onChange={(e) => setTitle(e.target.value)}
-
-      />
+      <input class='form-label' type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
 
       <input
-
         type="text"
-
         placeholder="Description"
-
         value={description}
-
         onChange={(e) => setDescription(e.target.value)}
 
       />
 
       <input
-
         type="date"
-
         placeholder="Due Date"
-
         value={dueDate}
-
         onChange={(e) => setDueDate(e.target.value)}
 
       />
 
-      <button onClick={handleAddingTask}>Add Task</button>
-      <button onClick={onCancel}>Cancel</button>
+      <button class='btn btn-primary' data-bs-dismiss='modal' onClick={handleAddingTask}>Add Task</button>
+      <button class='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
     </div>
 
   );

@@ -17,11 +17,11 @@
 
        <button onClick={() => onComplete(task)}>{task.completed ? 'Incomplete' : 'Complete'}</button>
 
-       <button onClick={() => onEdit(task)}>Edit</button>
+       <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#edit-modal' onClick={() => onEdit(task)}>Edit Task</button>
 
        <button onClick={() => onDelete(task.id)}>Delete</button>
 
-       <button onClick={() => onClose(task)}>Close</button>
+       <button class='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
 
      </div>
 
