@@ -12,7 +12,7 @@ const TaskEditForm = ({ task, onSave}) => {
   };
 
   return (
-    <div className="custom-popup">
+    <div>
       <h2>Edit Task</h2>
       <input
         type="text"
@@ -32,8 +32,8 @@ const TaskEditForm = ({ task, onSave}) => {
         value={editedTask.dueDate}
         onChange={(e) => setEditedTask({ ...editedTask, dueDate: e.target.value })}
       />
-      <button class='btn btn-primary' data-bs-dismiss='modal' onClick={handleSave}>Save</button>
-      <button class='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
+      <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleSave}>Save</button>
+      <button className='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
     </div>
   );
 };

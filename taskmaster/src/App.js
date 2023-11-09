@@ -25,7 +25,7 @@ const App = () => {
     // Find and select the clicked task
     const task = tasks.find((t) => t.id === taskId);
     setSelectedTask(task);
-    
+    console.log(selectedTask.id)
   };
 
   const handleCompleteTask = (task) => {
@@ -59,14 +59,14 @@ const App = () => {
   return (
 
     <div>
-      <nav class='navbar navbar-expand-md navbar-dark bg-light'>
-        <div class='container-fluid'>
+      <nav className='navbar navbar-expand-md navbar-dark bg-light'>
+        <div className='container-fluid'>
 
           <h2>TaskMaster</h2>
 
-          <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#add-modal'>Add Task</button>
+          <button className='btn btn-primary' data-bs-toggle='modal' data-bs-target='#add-modal'>Add Task</button>
         
-          <select class='form-select'>
+          <select className='form-select'>
             <option>Order of Creation</option>
             <option>Due Dates</option>
             <option>Completed</option>
@@ -74,64 +74,65 @@ const App = () => {
         </div>
       </nav>
 
-      <div class='container-fluid'>
+      <div className='container-fluid'>
 
 
-        <hr class='divider-line' />
+        <hr className='divider-line' />
 
-        <div class = 'container'>
-          <div class='row'>
-            <div class='col-3'><p>Task Name</p></div>
-            <div class='col-3'><p>Due Date</p></div>
-            <div class='col-3'><p>Description</p></div>
-            <div class='col-3'><p>Status</p></div>
+        <div className = 'container'>
+          <div className='row'>
+            <div className='col-3'><p>Task Name</p></div>
+            <div className='col-3'><p>Due Date</p></div>
+            <div className='col-3'><p>Description</p></div>
+            <div className='col-3'><p>Status</p></div>
           </div>
         </div>
 
         <hr className='divider-line' />
         
-        <div class='container'>
-        <TaskList tasks={tasks} onTaskClick={handleTaskClick} />
+        <div className='container'>
+        <TaskList tasks={tasks} onTaskClick={handleTaskClick}/>
         </div>
 
-        <div class='modal' id='add-modal'>
-          <div class='modal-dialog'>
-            <div class='modal-content'>
-              <div class='modal-header'>
+        <div className='modal' id='add-modal'>
+          <div className='modal-dialog'>
+            <div className='modal-content'>
+              <div className='modal-header'>
                 <h4>PLACEHOLDERS Adding a New Task</h4>
               </div>
-              <div class='modal-body'>
+              <div className='modal-body'>
                 <TaskAddForm onSave={handleAddTask}/>
               </div>
             </div>
           </div>
         </div>
 
-        <div class='modal' id='edit-modal'>
-          <div class='modal-dialog'>
-            <div class='modal-content'>
-              <div class='modal-header'>
+        <div className='modal' id='edit-modal'>
+          <div className='modal-dialog'>
+            <div className='modal-content'>
+              <div className='modal-header'>
                 <h4>PLACEHOLDERS Editing a Task</h4>
               </div>
-              <div class='modal-body'>
+              <div className='modal-body'>
                 <TaskEditForm task={editingTask} onSave={handleSaveEditedTask}/>
               </div>
             </div>
           </div>
         </div>
 
-        <div class='modal' id='task-modal'>
-          <div class='modal-dialog'>
-            <div class='modal-content'>
-              <div class='modal-header'>
+        <div className='modal' id='task-modal'>
+          <div className='modal-dialog'>
+            <div className='modal-content'>
+              <div className='modal-header'>
                 <h4>PLACEHOLDERS Task Opened</h4>
               </div>
-              <div class='modal-body'>
-                <Task task={selectedTask} onComplete={handleCompleteTask} onEdit={handleEditTask} onDelete={handleDeleteTask}/>
+              <div className='modal-body'>
+                {selectedTask && <Task task={selectedTask} onComplete={handleCompleteTask} onEdit={handleEditTask} onDelete={handleDeleteTask}/>}
               </div>
             </div>
-          </div>
+          </div>  
         </div>
+      
       </div>
     </div>
   );

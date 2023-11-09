@@ -3,9 +3,9 @@
    import React from 'react';
    import './App.css';
 
-   const Task = ({ task, onComplete, onEdit, onDelete, onClose}) => (
+   const Task = ({ task, onComplete, onEdit, onDelete}) => (
 
-     <div className="custom-popup">
+     <div>
 
        <h3>{task.title}</h3>
 
@@ -17,11 +17,11 @@
 
        <button onClick={() => onComplete(task)}>{task.completed ? 'Incomplete' : 'Complete'}</button>
 
-       <button class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#edit-modal' onClick={() => onEdit(task)}>Edit Task</button>
+       <button className='btn btn-primary' data-bs-toggle='modal' data-bs-target='#edit-modal' onClick={() => onEdit(task)}>Edit Task</button>
 
        <button onClick={() => onDelete(task.id)}>Delete</button>
 
-       <button class='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
+       <button className='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
 
      </div>
 
