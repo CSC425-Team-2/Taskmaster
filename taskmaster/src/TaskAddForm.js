@@ -34,7 +34,7 @@ const TaskAddForm = ({onSave}) => {
 
   return (
 
-    <div className="custom-popup">
+    <div>
 
       <input className='form-label' type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
 

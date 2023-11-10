@@ -48,6 +48,7 @@ const App = () => {
 
     // Update the selected task with the edited task
     setSelectedTask(editedTask);
+    setEditingTask(null);
   };
 
   const handleDeleteTask = (taskId) => {
@@ -114,7 +115,7 @@ const App = () => {
                 <h4>PLACEHOLDERS Editing a Task</h4>
               </div>
               <div className='modal-body'>
-                <TaskEditForm task={editingTask} onSave={handleSaveEditedTask}/>
+                {editingTask && <TaskEditForm task={editingTask} onSave={handleSaveEditedTask}/>}
               </div>
             </div>
           </div>
