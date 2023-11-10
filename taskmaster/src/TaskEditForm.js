@@ -3,12 +3,24 @@ import './App.css';
 
 const TaskEditForm = ({ task, onSave}) => {
   const [editedTask, setEditedTask] = useState({ ...task });
+  var tempTitle = task.title;
+  var tempDescription = task.description;
+  var tempDueDate = task.dueDate;
 
   const handleSave = () => {
     // Validate and save the edited task
     if (editedTask.title && editedTask.description && editedTask.dueDate) {
       onSave(editedTask); // Call the onSave function to update the task
     }
+  };
+
+  const handleCancelEdit = () => {
+    // Cancel
+    editedTask.title = tempTitle;
+    editedTask.description = tempDescription;
+    editedTask.dueDate = tempDueDate;
+     
+    onSave(editedTask); // Call the onSave function to update the task but with the old info
   };
 
   return (
@@ -33,7 +45,7 @@ const TaskEditForm = ({ task, onSave}) => {
         onChange={(e) => setEditedTask({ ...editedTask, dueDate: e.target.value })}
       />
       <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleSave}>Save</button>
-      <button className='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
+      <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleCancelEdit}>Cancel</button>
     </div>
   );
 };

@@ -1,77 +1,61 @@
 
   /* custom-popup-styles.css */
 
-  #menu-button {
-    cursor: pointer;
-    min-width: 5%;
-    position: relative;
-    padding: 2%;
-    padding-left: 1%;
-    padding-right: 1%;
-    font-size: 1.2rem;
-    margin-left: 5px;
-    margin-right: 5px;
-  }
-
-  .custom-popup {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  padding: 5%;
-  min-width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
-  position: 'fixed';
-  top: '50%';
-  left: '50%';
-  transform: 'translate(-50%, -50%)';
-  background-color: '#FFF';
-  z-Index: 1000;
+.primary {
+  background-color: seashell;
+  outline-color: seashell;
+  border-color: #FF5430;
 }
 
-.custom-popup h2 {
-  font-size: 1.5rem;
+.secondary {
+  background-color: #FF5430;
+  outline-color: #FF5430;
 }
 
-.custom-popup input {
-  width: 95%;
-  margin-bottom: 10px;
-  padding: 8px;
+.tertiary {
+  background-color: #F2B8C6;
+  outline-color: #F2B8C6;
 }
 
-.custom-popup button {
-  background-color: #007bff;
-  color: #fff;
-  border: 2%;
-  padding-left: 3%;
-  padding-right: 3%;
-  cursor: pointer;
+.root-style {
+  height: '100%';
+  min-height: '100%';
+  background-color: seashell;
+  outline-color: seashell;
 }
 
-.divider-line {
-  background-color: black;
-  color: black;
-  outline-color: black;
-  height: 2px;
+.no-margin {
+  margin: 0%;
 }
 
-@media only screen and (min-width: 769px) {
+.no-padding {
+  padding: 0%;
+}
 
-  .custom-popup {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 5%;
-    min-height:225px;
-    max-height:225px;
-    min-width: 400px;
-    max-width: 400px;
-    margin: 0 auto;
-    position: 'fixed';
-    top: '50%';
-    left: '50%';
-    transform: 'translate(-50%, -50%)';
-    background-color: '#FFF';
-    z-Index: 1000;
+.page-header {
+  color:#FF5430;
+
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+.description {
+  word-wrap: break-word;
+}
+
+.button-work-around {
+  margin-right: 16px;
+  size: 50%;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .button-work-around {
+    size: 100%;
   }
 }

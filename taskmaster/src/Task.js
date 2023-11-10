@@ -15,11 +15,11 @@
 
        <p>Task Status: {task.completed ? 'Completed' : 'Pending'}</p>
 
-       <button onClick={() => onComplete(task)}>{task.completed ? 'Incomplete' : 'Complete'}</button>
+       <button className='btn btn-primary' onClick={() => onComplete(task)}>{task.completed ? 'Set Pending' : 'Set Complete'}</button>
 
        <button className='btn btn-primary' data-bs-toggle='modal' data-bs-target='#edit-modal' onClick={() => onEdit(task)}>Edit Task</button>
 
-       <button onClick={() => onDelete(task.id)}>Delete</button>
+       <button className='btn btn-primary' onClick={() => onDelete(task.id)}>Delete</button>
 
        <button className='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
 

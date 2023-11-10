@@ -25,8 +25,18 @@ const TaskAddForm = ({onSave}) => {
         setDescription('');
 
         setDueDate('');
-
     }
+  };
+
+  const handleCancelAdd = () => {
+
+    //Cancel and reset input text fields
+
+      setTitle('');
+
+      setDescription('');
+
+      setDueDate('');
 
   };
 
@@ -43,7 +53,7 @@ const TaskAddForm = ({onSave}) => {
       <input type="date" placeholder="Due Date" value={dueDate} onChange={(e) => setDueDate(e.target.value)}/>
 
       <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleAddingTask}>Add Task</button>
-      <button className='btn btn-primary' data-bs-dismiss='modal'>Cancel</button>
+      <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleCancelAdd}>Cancel</button>
     </div>
 
   );

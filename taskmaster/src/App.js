@@ -9,6 +9,7 @@ import Task from './Task';
 import TaskEditForm from './TaskEditForm';
 import TaskAddForm from './TaskAddForm';
 import './App.css';
+import taskMasterLogo from './images/taskmaster-logo.jpg'
 
 const App = () => {
   const [tasks, setTasks] = useState([]);
@@ -25,7 +26,6 @@ const App = () => {
     // Find and select the clicked task
     const task = tasks.find((t) => t.id === taskId);
     setSelectedTask(task);
-    console.log(selectedTask.id)
   };
 
   const handleCompleteTask = (task) => {
@@ -57,46 +57,53 @@ const App = () => {
     setSelectedTask(null);
   };
 
+  /* 
+  Couldn't get styles to apply correctly to the sort selection so removing for the time being.
+  <select className='form-select nav-item'>
+    <option>Order of Creation</option>
+    <option>Due Dates</option>
+    <option>Completed</option>
+  </select>
+  */
+
   return (
 
-    <div>
-      <nav className='navbar navbar-expand-md navbar-dark bg-light'>
-        <div className='container-fluid'>
-
-          <h2>TaskMaster</h2>
-
-          <button className='btn btn-primary' data-bs-toggle='modal' data-bs-target='#add-modal'>Add Task</button>
-        
-          <select className='form-select'>
-            <option>Order of Creation</option>
-            <option>Due Dates</option>
-            <option>Completed</option>
-          </select>
+    <div className='root-style primary'>
+      <nav className='navbar navbar-expand'>
+        <div className='container-fluid no-padding'>
+          <div className='navbar-brand page-header no-margin'>
+            <img src={taskMasterLogo} alt='Taskmaster Logo' className='img-fluid' width='100px' height='auto'/>
+            Taskmaster
+          </div>
+          <ul className='navbar-nav'>
+            <li className='nav-item'>
+              <button className='btn btn-primary secondary border-0 button-work-around' data-bs-toggle='modal' data-bs-target='#add-modal'>Add Task</button>
+            </li>
+          </ul>
         </div>
       </nav>
 
       <div className='container-fluid'>
 
-
-        <hr className='divider-line' />
+        <div className='p-1 secondary'></div>
 
         <div className = 'container'>
-          <div className='row'>
-            <div className='col-3'><p>Task Name</p></div>
-            <div className='col-3'><p>Due Date</p></div>
-            <div className='col-3'><p>Description</p></div>
-            <div className='col-3'><p>Status</p></div>
+          <div className='row align-items-start no-margin no-padding'>
+            <div className='col text-center'><p>Task Name</p></div>
+            <div className='col text-center d-none d-md-block'><p>Due Date</p></div>
+            <div className='col text-center d-none d-md-block'><p>Description</p></div>
+            <div className='col text-center'><p>Status</p></div>
           </div>
         </div>
 
-        <hr className='divider-line' />
+        <div className='p-1 secondary'></div>
         
-        <div className='container'>
-        <TaskList tasks={tasks} onTaskClick={handleTaskClick}/>
+        <div className='container primary no-padding'>
+          <TaskList tasks={tasks} onTaskClick={handleTaskClick}/>
         </div>
 
-        <div className='modal' id='add-modal'>
-          <div className='modal-dialog'>
+        <div className='modal fade' data-bs-backdrop="static" id='add-modal'>
+          <div className='modal-dialog modal-fullscreen-sm-down modal-lg'>
             <div className='modal-content'>
               <div className='modal-header'>
                 <h4>PLACEHOLDERS Adding a New Task</h4>
@@ -108,8 +115,8 @@ const App = () => {
           </div>
         </div>
 
-        <div className='modal' id='edit-modal'>
-          <div className='modal-dialog'>
+        <div className='modal fade' data-bs-backdrop="static" id='edit-modal'>
+          <div className='modal-dialog modal-fullscreen-sm-down'>
             <div className='modal-content'>
               <div className='modal-header'>
                 <h4>PLACEHOLDERS Editing a Task</h4>
@@ -121,8 +128,8 @@ const App = () => {
           </div>
         </div>
 
-        <div className='modal' id='task-modal'>
-          <div className='modal-dialog'>
+        <div className='modal fade' data-bs-backdrop="static" id='task-modal'>
+          <div className='modal-dialog modal-fullscreen-sm-down'>
             <div className='modal-content'>
               <div className='modal-header'>
                 <h4>PLACEHOLDERS Task Opened</h4>
@@ -133,7 +140,7 @@ const App = () => {
             </div>
           </div>  
         </div>
-      
+        
       </div>
     </div>
   );
