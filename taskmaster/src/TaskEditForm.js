@@ -27,25 +27,31 @@ const TaskEditForm = ({ task, onSave}) => {
     <div>
       <h2>Edit Task</h2>
       <input
+        className='popup-linebr'
         type="text"
         placeholder="Title"
         value={editedTask.title}
         onChange={(e) => setEditedTask({ ...editedTask, title: e.target.value })}
       />
-      <input
-        type="text"
+
+      <textarea
+        className='popup-linebr w-100'
+        type="textarea"
         placeholder="Description"
+        rows={3}
         value={editedTask.description}
         onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
       />
+
       <input
+        className='popup-linebr'
         type="date"
         placeholder="Due Date"
         value={editedTask.dueDate}
         onChange={(e) => setEditedTask({ ...editedTask, dueDate: e.target.value })}
       />
-      <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleSave}>Save</button>
-      <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleCancelEdit}>Cancel</button>
+      <button className='btn btn-primary secondary border-0 popup-linebr' data-bs-dismiss='modal' onClick={handleSave}>Save</button>
+      <button className='btn btn-primary secondary border-0 popup-linebr' data-bs-dismiss='modal' onClick={handleCancelEdit}>Cancel</button>
     </div>
   );
 };
