@@ -19,13 +19,12 @@ const TaskAddForm = ({onSave}) => {
     if (title && description && dueDate) {
 
         onSave({ title, description, dueDate });
-
-        setTitle('');
-
-        setDescription('');
-
-        setDueDate('');
     }
+      setTitle('');
+
+      setDescription('');
+
+      setDueDate('');
   };
 
   const handleCancelAdd = () => {
@@ -50,6 +49,7 @@ const TaskAddForm = ({onSave}) => {
         className='popup-linebr' 
         type="text" 
         placeholder="Title" 
+        maxLength={40}
         value={title} 
         onChange={(e) => setTitle(e.target.value)}
       />
@@ -57,7 +57,8 @@ const TaskAddForm = ({onSave}) => {
       <textarea 
         className='popup-linebr w-100' 
         type="textarea" 
-        placeholder="Description" 
+        placeholder="Description"
+        maxLength={256}
         rows={3} 
         value={description} 
         onChange={(e) => setDescription(e.target.value)} 
@@ -66,8 +67,8 @@ const TaskAddForm = ({onSave}) => {
       <input 
         className='popup-linebr' 
         type="date" 
-        placeholder="Due Date" 
-        value={dueDate} 
+        placeholder="Due Date"
+        value={dueDate}
         onChange={(e) => setDueDate(e.target.value)}
       />
 
