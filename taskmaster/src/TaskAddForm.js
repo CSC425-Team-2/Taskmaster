@@ -40,20 +40,39 @@ const TaskAddForm = ({onSave}) => {
 
   };
 
-
+  //<input className='popup-linebr' type="textarea" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}/> 
 
   return (
 
     <div>
 
-      <input className='form-label' type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)}/>
+      <input 
+        className='popup-linebr' 
+        type="text" 
+        placeholder="Title" 
+        value={title} 
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
-      <input type="text" placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)}/>
+      <textarea 
+        className='popup-linebr w-100' 
+        type="textarea" 
+        placeholder="Description" 
+        rows={3} 
+        value={description} 
+        onChange={(e) => setDescription(e.target.value)} 
+      />
 
-      <input type="date" placeholder="Due Date" value={dueDate} onChange={(e) => setDueDate(e.target.value)}/>
+      <input 
+        className='popup-linebr' 
+        type="date" 
+        placeholder="Due Date" 
+        value={dueDate} 
+        onChange={(e) => setDueDate(e.target.value)}
+      />
 
-      <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleAddingTask}>Add Task</button>
-      <button className='btn btn-primary' data-bs-dismiss='modal' onClick={handleCancelAdd}>Cancel</button>
+      <button className='btn btn-primary secondary border-0 popup-linebr' data-bs-dismiss='modal' onClick={handleAddingTask}>Add Task</button>
+      <button className='btn btn-primary secondary border-0 popup-linebr' data-bs-dismiss='modal' onClick={handleCancelAdd}>Cancel</button>
     </div>
 
   );

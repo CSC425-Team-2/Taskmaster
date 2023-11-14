@@ -34,7 +34,7 @@
 
 .page-header {
   color:#FF5430;
-
+  pointer-events: none;
   font-size: 2em;
   margin-top: 0.67em;
   margin-bottom: 0.67em;
@@ -44,12 +44,36 @@
   vertical-align: middle;
 }
 
+.popup-linebr {
+  display: block;
+  margin: 10px;
+}
+
+input.popup-linebr {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+}
+
+textarea.popup-linbr {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+}
+
 .description {
   word-wrap: break-word;
 }
 
 .button-work-around {
   margin-right: 16px;
+}
+
+.btn-primary:hover {
+  background-color: #ff9696;
+  border-color: #ff9696;
 }
 
 @media only screen and (min-width: 768px) {

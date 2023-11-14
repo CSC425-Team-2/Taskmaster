@@ -104,9 +104,9 @@ const App = () => {
 
         <div className='modal fade' data-bs-backdrop="static" id='add-modal'>
           <div className='modal-dialog modal-fullscreen-sm-down modal-lg'>
-            <div className='modal-content'>
+            <div className='modal-content primary'>
               <div className='modal-header'>
-                <h4>PLACEHOLDERS Adding a New Task</h4>
+                <h4>Add a New Task</h4>
               </div>
               <div className='modal-body'>
                 <TaskAddForm onSave={handleAddTask}/>
@@ -117,10 +117,7 @@ const App = () => {
 
         <div className='modal fade' data-bs-backdrop="static" id='edit-modal'>
           <div className='modal-dialog modal-fullscreen-sm-down'>
-            <div className='modal-content'>
-              <div className='modal-header'>
-                <h4>PLACEHOLDERS Editing a Task</h4>
-              </div>
+            <div className='modal-content primary'>
               <div className='modal-body'>
                 {editingTask && <TaskEditForm task={editingTask} onSave={handleSaveEditedTask}/>}
               </div>
@@ -130,10 +127,7 @@ const App = () => {
 
         <div className='modal fade' data-bs-backdrop="static" id='task-modal'>
           <div className='modal-dialog modal-fullscreen-sm-down'>
-            <div className='modal-content'>
-              <div className='modal-header'>
-                <h4>PLACEHOLDERS Task Opened</h4>
-              </div>
+            <div className='modal-content primary'>
               <div className='modal-body'>
                 {selectedTask && <Task task={selectedTask} onComplete={handleCompleteTask} onEdit={handleEditTask} onDelete={handleDeleteTask}/>}
               </div>
