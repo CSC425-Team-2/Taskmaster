@@ -140,8 +140,10 @@ const App = () => {
             </div>
           </div>  
         </div>
+
         
-      </div>
+        
+      </div><div className='primary'></div>
     </div>
   );
 };
