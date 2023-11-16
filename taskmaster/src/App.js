@@ -11,51 +11,91 @@ import TaskAddForm from './TaskAddForm';
 import './App.css';
 import taskMasterLogo from './images/taskmaster-logo.jpg'
 
-const App = () => {
-  const [tasks, setTasks] = useState([]);
-  const [selectedTask, setSelectedTask] = useState(null);
-  const [editingTask, setEditingTask] = useState(null);
+  // App.js
 
-  const handleAddTask = (newTask) => {
-    // Create a new task with a unique ID and mark it as not completed
-    const task = { ...newTask, id: tasks.length + 1, completed: false };
-    setTasks([...tasks, task]);
-  };
+  import React, { useState } from 'react';
 
-  const handleTaskClick = (taskId) => {
-    // Find and select the clicked task
-    const task = tasks.find((t) => t.id === taskId);
-    setSelectedTask(task);
-  };
+   import TaskList from './TaskList';
 
-  const handleCompleteTask = (task) => {
-    // Set the task complete or incomplete
-    task.completed = !task.completed;
-    setTasks(tasks.map((t) => (t.id === task.id ? task : t)));
-  };
+   import Task from './Task';
 
-  const handleEditTask = (editedTask) => {
-    // Update the selected task with the edited task
-    setEditingTask(editedTask);
-  };
+  import TaskEditForm from './TaskEditForm';
 
-  const handleSaveEditedTask = (editedTask) => {
-    // Update the task in the 'tasks' state
-    const updatedTasks = tasks.map((task) =>
-      task.id === editedTask.id ? editedTask : task
-    );
-    setTasks(updatedTasks);
+  // App.js
+  const App = () => {
 
-    // Update the selected task with the edited task
-    setSelectedTask(editedTask);
-    setEditingTask(null);
-  };
+    const [tasks, setTasks] = useState([]);
 
-  const handleDeleteTask = (taskId) => {
-    // Delete the task and clear the selection
-    setTasks(tasks.filter((task) => task.id !== taskId));
-    setSelectedTask(null);
-  };
+    const [selectedTask, setSelectedTask] = useState(null);
+
+    const [editingTask, setEditingTask] = useState(null);
+
+
+    const handleAddTask = (newTask) => {
+
+      // Create a new task with a unique ID and mark it as not completed
+
+      const task = { ...newTask, id: tasks.length + 1, completed: false };
+
+      setTasks([...tasks, task]);
+
+    };
+
+
+    const handleTaskClick = (taskId) => {
+
+      // Find and select the clicked task
+
+      const task = tasks.find((t) => t.id === taskId);
+
+      setSelectedTask(task);
+
+    };
+
+   const handleCompleteTask = (task) => {
+
+       // Set the task complete or incomplete
+       task.completed = !task.completed;
+
+       //I don't know what this does excatly but it breaks if I take it out
+       setTasks(tasks.map((t) => (t.id === task.id ? task : t)))
+
+       //setSelectedTask(null);
+
+   };
+ 
+   const handleSaveEditedTask = (editedTask) => {
+     // Update the task in the 'tasks' state
+     const updatedTasks = tasks.map((task) =>
+       task.id === editedTask.id ? editedTask : task
+     );
+     setTasks(updatedTasks);
+ 
+     // Update the selected task with the edited task
+     setSelectedTask(editedTask);
+     setEditingTask(null); // Close the edit form
+   };
+
+    const handleDeleteTask = (taskId) => {
+
+      // Delete the task and clear the selection
+
+      setTasks(tasks.filter((task) => task.id !== taskId));
+
+      setSelectedTask(null);
+
+    };
+
+    const handleEditTask = (editedTask) => {
+      // Update the selected task with the edited task
+      setEditingTask(editedTask);
+
+      // Update the selected task with the edited task
+      setSelectedTask(editedTask);
+      setEditingTask(null);
+    };
+
+
 
   /* 
   Couldn't get styles to apply correctly to the sort selection so removing for the time being.
@@ -133,9 +173,7 @@ const App = () => {
               </div>
             </div>
           </div>  
-        </div>
-
-        
+        </div>  
         
       </div><div className='primary'></div>
     </div>
