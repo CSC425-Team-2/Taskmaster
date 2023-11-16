@@ -12,16 +12,6 @@ import './App.css';
 import taskMasterLogo from './images/taskmaster-logo.jpg'
 
   // App.js
-
-  import React, { useState } from 'react';
-
-   import TaskList from './TaskList';
-
-   import Task from './Task';
-
-  import TaskEditForm from './TaskEditForm';
-
-  // App.js
   const App = () => {
 
     const [tasks, setTasks] = useState([]);
