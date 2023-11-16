@@ -30,6 +30,7 @@ const TaskEditForm = ({ task, onSave}) => {
         className='popup-linebr'
         type="text"
         placeholder="Title"
+        maxLength={40}
         value={editedTask.title}
         onChange={(e) => setEditedTask({ ...editedTask, title: e.target.value })}
       />
@@ -38,6 +39,7 @@ const TaskEditForm = ({ task, onSave}) => {
         className='popup-linebr w-100'
         type="textarea"
         placeholder="Description"
+        maxLength={256}
         rows={3}
         value={editedTask.description}
         onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
