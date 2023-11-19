@@ -1,26 +1,29 @@
 // Task.js
 
    import React from 'react';
+   import './App.css';
 
-   const Task = ({ task, onComplete, onEdit, onDelete, onClose}) => (
+   const Task = ({ task, onComplete, onEdit, onDelete}) => (
 
      <div>
 
        <h3>{task.title}</h3>
 
-       <p>{task.description}</p>
+       <p className='d-none d-md-block description'>{task.description}</p>
 
        <p>Due Date: {task.dueDate}</p>
 
        <p>Task Status: {task.completed ? 'Completed' : 'Pending'}</p>
+      
+      <div className='secondary-btn'>
+        <button className='btn btn-primary secondary border-0 m-1' onClick={() => onComplete(task)}>{task.completed ? 'Set Pending' : 'Set Complete'}</button>
 
-       <button onClick={() => onComplete(task)}>{task.completed ? 'Completed' : 'Complete'}</button>
+        <button className='btn btn-primary secondary border-0 m-1' data-bs-toggle='modal' data-bs-target='#edit-modal' onClick={() => onEdit(task)}>Edit Task</button>
 
-       <button onClick={() => onEdit(task)}>Edit</button>
+        <button className='btn btn-primary secondary border-0 m-1' data-bs-dismiss='modal' onClick={() => onDelete(task.id)}>Delete</button>
 
-       <button onClick={() => onDelete(task.id)}>Delete</button>
-
-       <button onClick={() => onClose(task)}>Close</button>
+        <button className='btn btn-primary secondary border-0 m-1' data-bs-dismiss='modal'>Cancel</button>
+      </div>
 
      </div>
 

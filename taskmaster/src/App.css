@@ -1,38 +1,84 @@
-.App {
-  text-align: center;
+
+  /* custom-popup-styles.css */
+
+.primary {
+  background-color: seashell;
+  outline-color: seashell;
+  border-color: #FF5430;
 }
 
-.App-logo {
-  height: 40vmin;
+.secondary {
+  background-color: #FF5430;
+  outline-color: #FF5430;
+}
+
+.tertiary {
+  background-color: #F2B8C6;
+  outline-color: #F2B8C6;
+}
+
+.root-style {
+  height: '100%';
+  min-height: '100%';
+  background-color: seashell;
+  outline-color: seashell;
+}
+
+.no-margin {
+  margin: 0%;
+}
+
+.no-padding {
+  padding: 0%;
+}
+
+.page-header {
+  color:#FF5430;
   pointer-events: none;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  margin-left: 0;
+  margin-right: 0;
+  font-weight: bold;
+  vertical-align: middle;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.popup-linebr {
+  display: block;
+  margin: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+input.popup-linebr {
+  display: block;
+  width: 100%;
+  min-width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+textarea.popup-linbr {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+  flex: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.description {
+  word-wrap: break-word;
+}
+
+.button-work-around {
+  margin-right: 16px;
+}
+
+.btn-primary:hover {
+  background-color: #ff9696;
+  border-color: #ff9696;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .button-work-around {
+    margin-right: 64px;
   }
 }
