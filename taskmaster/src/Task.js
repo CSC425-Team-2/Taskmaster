@@ -22,7 +22,7 @@
 
         <button className='btn btn-primary secondary border-0 m-1' data-bs-dismiss='modal' onClick={() => onDelete(task.id)}>Delete</button>
 
-        <button className='btn btn-primary secondary border-0 m-1' data-bs-dismiss='modal'>Cancel</button>
+        <button className='btn btn-primary secondary border-0 m-1' data-bs-dismiss='modal'>Close</button>
       </div>
 
      </div>

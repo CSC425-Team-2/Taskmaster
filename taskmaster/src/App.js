@@ -82,7 +82,6 @@ import taskMasterLogo from './images/taskmaster-logo.jpg'
 
       // Update the selected task with the edited task
       setSelectedTask(editedTask);
-      setEditingTask(null);
     };
 
 
@@ -102,8 +101,8 @@ import taskMasterLogo from './images/taskmaster-logo.jpg'
       <nav className='navbar navbar-expand'>
         <div className='container-fluid no-padding'>
           <div className='navbar-brand page-header no-margin'>
-            <img src={taskMasterLogo} alt='Taskmaster Logo' className='img-fluid' width='100px' height='auto'/>
-            Taskmaster
+            <img src={taskMasterLogo} alt='Silly Little Logo' className='img-fluid' width='100px' height='auto'/>
+            MiTask
           </div>
           <ul className='navbar-nav'>
             <li className='nav-item'>
