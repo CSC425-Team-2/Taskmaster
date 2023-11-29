@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //import "bootstrap/dist/js/bootstrap.bundle.min.js";
 //import "bootstrap/dist/css/bootstrap.min.css";
@@ -20,15 +20,97 @@ import taskMasterLogo from './images/taskmaster-logo.jpg'
 
     const [editingTask, setEditingTask] = useState(null);
 
+    const [noTasksMessage, setNoTasksMessage] = useState("");
+
+    useEffect(() => {
+        const fetchTasks = async () => {
+          try {
+            const response = await fetch('http://localhost:5267/api/tasks');
+            if(!response.ok) {
+              throw new Error(`HTTP error! Status: ${response.message}`);
+            }
+            const data = await response.json();
+            console.log(data);
+
+            //Fixing the discrepency between the properties of our local Tasks & our backend Tasks
+            const transformedTasks = data.map((dbTask) => ({
+              id: dbTask.taskID,
+              title: dbTask.title, // Assuming title is available in your database tasks
+              description: dbTask.description,
+              dueDate: dbTask.dueDate,
+              completed: dbTask.isCompleted,
+            }));
+
+            if(data.length > 0) {
+              setTasks(transformedTasks);
+            }
+            else {
+              setNoTasksMessage("No tasks created.");
+            }
+          } catch (error) {
+            throw new Error('Error fetching data', error);
+          }
+        };
+
+        fetchTasks();
+      }, []);
+
+    const deleteTask = async (taskId) => {
+      try {
+        console.log("deleteTask initiated with id: ", taskId);
+        const response = await fetch(`http://localhost:5267/api/tasks/${taskId}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          console.error('Failed to delete task:', response.statusText);
+        } else {
+          console.log('Task deleted successfully');
+        }
+      } catch (error) {
+        console.error('Error while deleting task:', error.message);
+      }
+    };
+
+    const toggleTaskComplete = async (taskId) => {
+      try {
+        console.log("toggle complete initiated with id: ", taskId);
+        const response = await fetch(`http://localhost:5267/api/tasks/${taskId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        if (!response.ok) {
+          console.error('Failed to update task:', response.statusText);
+        } else {
+          console.log('Task updated succesffuly');
+        }
+      } catch (error) {
+        console.error("Error while updating task:", error.message);
+      }
+    };
 
     const handleAddTask = (newTask) => {
 
+      const formattedDueDate = formatDueDate(newTask.dueDate);
       // Create a new task with a unique ID and mark it as not completed
 
-      const task = { ...newTask, id: tasks.length + 1, completed: false };
+      const task = { ...newTask, id: tasks.length + 1, completed: false, dueDate:formattedDueDate};
+      console.log("New Task: ", task);
 
       setTasks([...tasks, task]);
 
+    };
+
+    const formatDueDate = (dueDate) => {
+      const date = new Date(dueDate);
+      const month = date.getMonth() + 1;
+      const day = date.getDate() + 1 ;
+      const year = date.getFullYear();
+      return `${month}-${day}-${year}`;
     };
 
 
@@ -42,10 +124,11 @@ import taskMasterLogo from './images/taskmaster-logo.jpg'
 
     };
 
-   const handleCompleteTask = (task) => {
+    const handleCompleteTask = (task) => {
 
        // Set the task complete or incomplete
        task.completed = !task.completed;
+       toggleTaskComplete(task.id);
 
        //I don't know what this does excatly but it breaks if I take it out
        setTasks(tasks.map((t) => (t.id === task.id ? task : t)))
@@ -69,7 +152,8 @@ import taskMasterLogo from './images/taskmaster-logo.jpg'
     const handleDeleteTask = (taskId) => {
 
       // Delete the task and clear the selection
-
+      deleteTask(taskId);
+      console.log("Task to delete: ", taskId);
       setTasks(tasks.filter((task) => task.id !== taskId));
 
       setSelectedTask(null);

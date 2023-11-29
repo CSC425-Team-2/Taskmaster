@@ -9,9 +9,10 @@
 
        <h3>{task.title}</h3>
 
-       <p className='d-none d-md-block description'>{task.description}</p>
 
        <p>Due Date: {task.dueDate}</p>
+
+       <p className='d-md-block description'>{task.description}</p>
 
        <p>Task Status: {task.completed ? 'Completed' : 'Pending'}</p>
       
