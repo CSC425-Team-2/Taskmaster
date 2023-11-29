@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using taskmaster_api.Data;
 
@@ -11,9 +12,10 @@ using taskmaster_api.Data;
 namespace taskmaster_api.Migrations
 {
     [DbContext(typeof(TaskmasterDbContext))]
-    partial class TaskmasterDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231128214625_RemovedUsername")]
+    partial class RemovedUsername
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

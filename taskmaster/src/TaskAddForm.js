@@ -12,20 +12,48 @@ const TaskAddForm = ({onSave}) => {
 
   const [dueDate, setDueDate] = useState('');
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const formattedDate = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    });
+    return formattedDate;
+  };
+
   const handleAddingTask = () => {
 
     // Validate and add task
 
     if (title && description && dueDate) {
 
-        onSave({ title, description, dueDate });
-    }
-      setTitle('');
+      const newTask = { title, description, dueDate };
+      onSave(newTask); //Original prop function for UI
 
-      setDescription('');
+      //Local host number will change depending on who is hosting
+      fetch('http://localhost:5267/api/tasks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newTask),
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json(); //Returns the json in .NET, viewable in terminal
+        })
+        .catch(error => console.error('Error creating task:', error));
+      }
+        //Reset the UI state
+        setTitle('');
 
-      setDueDate('');
-  };
+        setDescription('');
+
+        setDueDate('');
+    };
 
   const handleCancelAdd = () => {
 
