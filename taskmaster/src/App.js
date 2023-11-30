@@ -186,7 +186,7 @@ import taskMasterLogo from './images/taskmaster-logo.jpg'
         <div className='container-fluid no-padding'>
           <div className='navbar-brand page-header no-margin'>
             <img src={taskMasterLogo} alt='Silly Little Logo' className='img-fluid' width='100px' height='auto'/>
-            MiTask
+            Taskify
           </div>
           <ul className='navbar-nav'>
             <li className='nav-item'>

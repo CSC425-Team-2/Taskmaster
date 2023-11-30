@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\drews\\Documents\\GitHub\\TaskmasterUpdated\\Taskmaster\\taskmaster-api\\taskmaster-api.csproj": {}
+    "C:\\Users\\jason\\OneDrive\\Documents\\GitHub\\Taskmaster\\taskmaster-api\\taskmaster-api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\drews\\Documents\\GitHub\\TaskmasterUpdated\\Taskmaster\\taskmaster-api\\taskmaster-api.csproj": {
+    "C:\\Users\\jason\\OneDrive\\Documents\\GitHub\\Taskmaster\\taskmaster-api\\taskmaster-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\drews\\Documents\\GitHub\\TaskmasterUpdated\\Taskmaster\\taskmaster-api\\taskmaster-api.csproj",
+        "projectUniqueName": "C:\\Users\\jason\\OneDrive\\Documents\\GitHub\\Taskmaster\\taskmaster-api\\taskmaster-api.csproj",
         "projectName": "taskmaster-api",
-        "projectPath": "C:\\Users\\drews\\Documents\\GitHub\\TaskmasterUpdated\\Taskmaster\\taskmaster-api\\taskmaster-api.csproj",
-        "packagesPath": "C:\\Users\\drews\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\drews\\Documents\\GitHub\\TaskmasterUpdated\\Taskmaster\\taskmaster-api\\obj\\",
+        "projectPath": "C:\\Users\\jason\\OneDrive\\Documents\\GitHub\\Taskmaster\\taskmaster-api\\taskmaster-api.csproj",
+        "packagesPath": "C:\\Users\\jason\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jason\\OneDrive\\Documents\\GitHub\\Taskmaster\\taskmaster-api\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\drews\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\jason\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -78,6 +74,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[7.0.14, 7.0.14]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -86,7 +100,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
